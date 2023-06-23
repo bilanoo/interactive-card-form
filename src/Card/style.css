@@ -1,0 +1,18 @@
+.card-background {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.interactive-front-card {
+  position: relative;
+  margin-top: 230px;
+  overflow: visible;
+  margin-left: 650px;
+}
+
+.interactive-card-back {
+  margin-top: 30px;
+  margin-left: 750px;
+  overflow: visible;
+}

@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import backgroundColor from "../src/images/bg-main-desktop.png";
+import Card from "./Card";
+import { Grid } from "@mui/material";
+import FormController from "./FormController";
 
-function App() {
+const cardBackground = {
+  backgroundImage: `url(${backgroundColor})`,
+  height: "100vh",
+  backgroundRepeat: "no-repeat", // Add this property to prevent image repetition
+  backgroundSize: "cover", // Adjust the background size as needed
+};
+
+const App = () => {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Grid container style={{ height: "100vh" }}>
+        <Grid item xs={6} style={cardBackground} className="cards-background">
+          <Card />
+        </Grid>
+        <Grid item xs={6}>
+          <FormController />
+        </Grid>
+      </Grid>
     </div>
   );
-}
+};
 
 export default App;
