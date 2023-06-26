@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
 import backgroundColor from "../src/images/bg-main-desktop.png";
-import Card from "./Card";
+import CreditCard from "./CreditCard";
 import { Grid } from "@mui/material";
 import FormController from "./FormController";
 
@@ -18,7 +18,7 @@ const App = () => {
     <div className="App">
       <Grid container style={{ height: "100vh" }}>
         <Grid item xs={6} style={cardBackground} className="cards-background">
-          <Card />
+          <CreditCard />
         </Grid>
         <Grid item xs={6}>
           <FormController />
