@@ -19,6 +19,15 @@
   font-size: 15px;
   text-transform: uppercase;
 }
+
+.card-number {
+  position: absolute;
+  color: white;
+  top: 150px;
+  font-weight: 600;
+  margin-left: 30px;
+  font-size: 25px;
+}
 .interactive-card-back {
   margin-top: 30px;
   margin-left: 750px;

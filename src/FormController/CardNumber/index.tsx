@@ -15,23 +15,42 @@ const CardNumber = () => {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
     const digitTyped = event.currentTarget.value;
-    const onlyNumericalValues = /^(\d{0,4}(?:\s?\d{0,4})*)$/;
+    let inputNumbersOnly = digitTyped.replace(/\D/g, ""); // Get only digits
 
-    if (
-      cardHolderName.length <= 19 &&
-      isValueValid(digitTyped, onlyNumericalValues)
-    ) {
-      actions.setCardNumber(digitTyped);
+    if (inputNumbersOnly.length > 16) {
+      //If entered value has a length greater than 16 then take only the first 16 digits
+      inputNumbersOnly = inputNumbersOnly.substr(0, 16);
     }
+
+    // Get nd array of 4 digits per an element EX: ["4242", "4242", ...]
+    const splits = inputNumbersOnly.match(/.{1,4}/g);
+
+    let spacedNumber = "";
+    if (splits) {
+      spacedNumber = splits.join(" "); // Join all the splits with an empty space
+    }
+
+    actions.setCardNumber(spacedNumber);
   }
+
+  const cardNumberStyles = {
+    display: "flex",
+    marginTop: "30px",
+    marginBottom: "auto",
+    width: "45vh",
+
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
   return (
     <>
       <CustomerInput
         label={"CARD NUMBER"}
         handleChange={displayCardNumber}
         value={cardNumber}
-        type={"number"}
+        type={"text"}
         maxCharacterLength={19}
+        styleToApply={cardNumberStyles}
       />
     </>
   );

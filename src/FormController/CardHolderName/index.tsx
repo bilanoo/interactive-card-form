@@ -23,7 +23,15 @@ const CardHolderName = () => {
       actions.setCardHolderName(typedValue);
     }
   }
+  const cardHolderStyles = {
+    display: "flex",
+    marginTop: "320px",
+    marginBottom: "auto",
+    width: "45vh",
 
+    marginLeft: "auto",
+    marginRight: "auto",
+  };
   return (
     <>
       <CustomerInput
@@ -32,6 +40,7 @@ const CardHolderName = () => {
         value={cardHolderName}
         type={"text"}
         maxCharacterLength={20}
+        styleToApply={cardHolderStyles}
       />
     </>
   );
