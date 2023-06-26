@@ -38,7 +38,7 @@ const CreditCard = () => {
         <div className="cardholder-name">{cardHolderName}</div>
         <div className="card-number">{cardNumber}</div>
         <div className="expiry-month">{expiryMonth}</div>
-        <div className="expiry-dash">/</div>
+        {expiryMonth && <div className="expiry-dash">/</div>}
         <div className="expiry-year">{expiryYear}</div>
       </Card>
       <Card
