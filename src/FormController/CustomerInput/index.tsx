@@ -21,7 +21,6 @@ const CustomerInput = ({
   return (
     <>
       <TextField
-        required={true}
         className="card-holder-input-box"
         style={styleToApply}
         type={type}

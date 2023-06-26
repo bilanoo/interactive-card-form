@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import CardHolderName from "./CardHolderName";
 import CardNumber from "./CardNumber";
+import ExpiryDate from "./ExpiryDate";
 
 const FormController = () => {
   return (
@@ -14,6 +15,9 @@ const FormController = () => {
       </Grid>
       <Grid item xs={6}>
         <CardNumber />
+      </Grid>
+      <Grid item xs={6}>
+        <ExpiryDate />
       </Grid>
     </Grid>
   );
