@@ -38,6 +38,12 @@ const ConfirmButton = () => {
     expiryYear,
     cardVerificationCode,
   ]);
+  function handleClick(
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ): void {
+    actions.hasUserConfirmedValues(true);
+  }
+
   return (
     <>
       <Button
@@ -45,6 +51,7 @@ const ConfirmButton = () => {
         sx={buttonStyle}
         disabled={IsConfirmButtonDisabled}
         color="primary"
+        onClick={handleClick}
       >
         Confirm
       </Button>
