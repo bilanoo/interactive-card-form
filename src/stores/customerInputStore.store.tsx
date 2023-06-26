@@ -5,6 +5,7 @@ interface CustomerInputActions {
   setCardNumber: (digit: string) => void;
   setExpiryMonth: (month: string) => void;
   setExpiryYear: (year: string) => void;
+  setCardVerificationCode: (digits: string) => void;
 }
 
 interface CustomerInput {
@@ -12,6 +13,7 @@ interface CustomerInput {
   cardNumber: string;
   expiryMonth: string;
   expiryYear: string;
+  cardVerificationCode: string;
   actions: CustomerInputActions;
 }
 export const useCustomerInputStore = create<CustomerInput>((set) => ({
@@ -19,11 +21,14 @@ export const useCustomerInputStore = create<CustomerInput>((set) => ({
   cardNumber: "",
   expiryMonth: "",
   expiryYear: "",
+  cardVerificationCode: "",
   actions: {
     setCardHolderName: (name) => set(() => ({ cardHolderName: name })),
     setCardNumber: (digit: string) => set(() => ({ cardNumber: digit })),
     setExpiryMonth: (month: string) => set(() => ({ expiryMonth: month })),
     setExpiryYear: (year: string) => set(() => ({ expiryYear: year })),
+    setCardVerificationCode: (digits: string) =>
+      set(() => ({ cardVerificationCode: digits })),
   },
 }));
 
@@ -38,3 +43,6 @@ export const useCardExpiryMonth = () =>
 
 export const useCardExpiryYear = () =>
   useCustomerInputStore((state) => state.expiryYear);
+
+export const useCardVerificationCode = () =>
+  useCustomerInputStore((state) => state.cardVerificationCode);
