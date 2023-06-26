@@ -6,6 +6,7 @@ interface CustomerInputActions {
   setExpiryMonth: (month: string) => void;
   setExpiryYear: (year: string) => void;
   setCardVerificationCode: (digits: string) => void;
+  checkAllFieldsAreFilled: () => void;
 }
 
 interface CustomerInput {
@@ -14,6 +15,7 @@ interface CustomerInput {
   expiryMonth: string;
   expiryYear: string;
   cardVerificationCode: string;
+  IsConfirmButtonDisabled: boolean;
   actions: CustomerInputActions;
 }
 export const useCustomerInputStore = create<CustomerInput>((set) => ({
@@ -22,6 +24,7 @@ export const useCustomerInputStore = create<CustomerInput>((set) => ({
   expiryMonth: "",
   expiryYear: "",
   cardVerificationCode: "",
+  IsConfirmButtonDisabled: true,
   actions: {
     setCardHolderName: (name) => set(() => ({ cardHolderName: name })),
     setCardNumber: (digit: string) => set(() => ({ cardNumber: digit })),
@@ -29,6 +32,20 @@ export const useCustomerInputStore = create<CustomerInput>((set) => ({
     setExpiryYear: (year: string) => set(() => ({ expiryYear: year })),
     setCardVerificationCode: (digits: string) =>
       set(() => ({ cardVerificationCode: digits })),
+    checkAllFieldsAreFilled: () =>
+      set((store) => {
+        if (
+          store.cardHolderName &&
+          store.cardNumber &&
+          store.cardVerificationCode &&
+          store.expiryMonth &&
+          store.expiryYear
+        ) {
+          return { IsConfirmButtonDisabled: false };
+        } else {
+          return { IsConfirmButtonDisabled: true };
+        }
+      }),
   },
 }));
 
@@ -46,3 +63,6 @@ export const useCardExpiryYear = () =>
 
 export const useCardVerificationCode = () =>
   useCustomerInputStore((state) => state.cardVerificationCode);
+
+export const useConfirmButtonStatus = () =>
+  useCustomerInputStore((state) => state.IsConfirmButtonDisabled);

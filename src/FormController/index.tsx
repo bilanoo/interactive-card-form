@@ -3,6 +3,7 @@ import CardHolderName from "./CardHolderName";
 import CardNumber from "./CardNumber";
 import ExpiryDate from "./ExpiryDate";
 import CardVerificationCode from "./CardVerificationCode";
+import ConfirmButton from "./ConfirmButton";
 
 const FormController = () => {
   return (
@@ -22,6 +23,9 @@ const FormController = () => {
       </Grid>
       <Grid item xs={6}>
         <CardVerificationCode />
+      </Grid>
+      <Grid item xs={6}>
+        <ConfirmButton />
       </Grid>
     </Grid>
   );
