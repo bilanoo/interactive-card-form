@@ -8,6 +8,7 @@ interface CustomerInputActions {
   setCardVerificationCode: (digits: string) => void;
   checkAllFieldsAreFilled: () => void;
   hasUserConfirmedValues: (value: boolean) => void;
+  resetAllValues: () => void;
 }
 
 interface CustomerInput {
@@ -51,6 +52,14 @@ export const useCustomerInputStore = create<CustomerInput>((set) => ({
       }),
     hasUserConfirmedValues: (value: boolean) =>
       set(() => ({ displayConfirmation: value })),
+    resetAllValues: () =>
+      set(() => ({
+        cardHolderName: "",
+        cardNumber: "",
+        expiryMonth: "",
+        expiryYear: "",
+        cardVerificationCode: "",
+      })),
   },
 }));
 

@@ -1,59 +1,28 @@
 import { Button } from "@mui/material";
-import {
-  useCardExpiryMonth,
-  useCardExpiryYear,
-  useCardHolderName,
-  useCardNumber,
-  useCardVerificationCode,
-  useConfirmButtonStatus,
-  useCustomerInputStore,
-} from "../../stores/customerInputStore.store";
-import { useEffect } from "react";
 
-const ConfirmButton = () => {
-  const IsConfirmButtonDisabled = useConfirmButtonStatus();
-  const cardHolderName = useCardHolderName();
-  const cardNumber = useCardNumber();
-  const expiryMonth = useCardExpiryMonth();
-  const expiryYear = useCardExpiryYear();
-  const cardVerificationCode = useCardVerificationCode();
-  const actions = useCustomerInputStore((state) => state.actions);
+interface ConfirmButtonProps {
+  appliedStyles: any;
+  onClick: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  disabledStatus: boolean;
+  textToDisplay: string;
+}
 
-  const buttonStyle = {
-    backgroundColor: "black",
-    marginTop: "20px",
-    minWidth: "440px",
-    minHeight: "40px",
-    "&:disabled": {
-      backgroundColor: "grey",
-    },
-  };
-
-  useEffect(() => {
-    actions.checkAllFieldsAreFilled();
-  }, [
-    cardHolderName,
-    cardNumber,
-    expiryMonth,
-    expiryYear,
-    cardVerificationCode,
-  ]);
-  function handleClick(
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ): void {
-    actions.hasUserConfirmedValues(true);
-  }
-
+const ConfirmButton = ({
+  appliedStyles,
+  onClick,
+  disabledStatus,
+  textToDisplay,
+}: ConfirmButtonProps) => {
   return (
     <>
       <Button
         variant="contained"
-        sx={buttonStyle}
-        disabled={IsConfirmButtonDisabled}
+        sx={appliedStyles}
+        disabled={disabledStatus}
         color="primary"
-        onClick={handleClick}
+        onClick={onClick}
       >
-        Confirm
+        {textToDisplay}
       </Button>
     </>
   );
